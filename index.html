@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet"/>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Playfair Display', serif;
+            background: url(go2.jpg) no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            overflow: hidden; /* Prevent scrolling */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        .container h1 {
+            margin: 10px 0;
+            font-size: 2.5em;
+        }
+        .container h2 {
+            margin: 10px 0;
+            font-size: 3em;
+            font-weight: 700;
+        }
+        .container p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .container .invitation {
+            font-size: 1.3em;
+            margin: 20px 0;
+        }
+        .container .button {
+            margin: 20px 0;
+        }
+        .container .button a {
+            text-decoration: none;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container .button a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        .container .button a i {
+            margin-right: 10px;
+        }
+        .decoration {
+            margin: 20px 0;
+        }
+        .decoration img {
+            width: 100px;
+        }
+        .profile-container-lakian {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            width: 100%;
+            opacity: 0; /* Hide initially */
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .profile-container-binian {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            width: 100%;
+            opacity: 0; /* Hide initially */
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }                       
+
+        .profile-container.show {
+            opacity: 1; /* Show when in view */
+            transform: translateY(0);
+        }
+        .profile-image {
+            width: 200px;
+            height: 300px;
+            border-radius: 100px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .profile-name {
+            font-size: 32px;
+            margin: 20px 0 10px;
+            color: black;
+        }
+        .profile-details {
+            font-size: 18px;
+            color: #4a5a3c;
+            margin: 5px 0;
+        }
+
+        .kotak-nikah {
+            text-align: center;
+            background-color: #ffffff;
+
+
+        }
+
+        .kotak-rsvp {
+    background-color: rgb(255, 255, 255); /* Darker background for better readability */
+    width: 50%;
+    padding: 20px; /* Ensure padding for spacing */
+    border-radius: 10px;
+    margin: 20px auto; /* Center align and space out */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add some shadow for depth */
+}
+
+.rsvp-form {
+    color: #000000; /* Ensure text color is readable */
+    width: 100%;
+    max-width: 600px; /* Set a max-width for larger screens */
+    text-align: center;
+
+}
+
+.rsvp-form form, .guestbook form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rsvp-form label, .guestbook label {
+    margin: 10px 0 5px;
+}
+
+.rsvp-form input, .rsvp-form select, .guestbook input, .guestbook textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+.rsvp-form button, .guestbook button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.rsvp-form button:hover, .guestbook button:hover {
+    background-color: #555;
+}
+
+.guestbook {
+    background-color: rgb(255, 255, 255); /* Same background color as RSVP for consistency */
+    color: black;
+    width: 50%;
+    padding: 20px; /* Ensure padding for spacing */
+    border-radius: 10px;
+    margin: 20px auto; /* Center align and space out */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add some shadow for depth */
+    text-align: center;
+}
+
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decoration">
+            <img src="images-removebg-preview.png" alt="Floral decoration with a heart in the center"/>
+        </div>
+        <h1>WEDDING INVITATION</h1>
+        <h2>DAFFA & DINA</h2>
+        <p>WE INVITE YOU TO CELEBRATE OUR WEDDING</p>
+        <div class="invitation">
+            <p>Kepada Yth. Bapak / Ibu / Saudara/i</p>
+            <p>Tamu Undangan</p>
+        </div>
+        <div class="button">
+            <!-- Link to the profile section -->
+            <a href="#profiles">
+                <i class="fas fa-envelope"></i>
+                Buka Undangan
+            </a>
+        </div>
+    </div>
+
+    <!-- Added an ID to the profiles section -->
+    <div id="profiles">
+        <div class="profile-container profile-container-binian">
+            <img class="profile-image" src="toegas.jpg" alt="A woman in a wedding dress with a tiara, smiling and looking to the side"/>
+            <div class="profile-name">Dina</div>
+            <div class="profile-details">Putri Pertama</div>
+            <div class="profile-details">Bpk. Nugroho & Ibu Meilani</div>
+        </div>
+
+        <div class="profile-container profile-container-lakian">
+            <img class="profile-image" src="oranghitam.jpg" alt="Profile picture of a person in a white suit with glasses"/>
+            <div class="profile-name">Daffa</div>
+            <div class="profile-details">Putra Pertama</div>
+            <div class="profile-details">Bpk. Andi & Ibu Linda</div>
+        </div>
+    </div>
+
+
+    <div class="kotak-rsvp">
+        <div class="rsvp-form">
+            <h3>RSVP</h3>
+            <form action="/submit-rsvp" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="attendance">Apakah Anda Akan Berhadir?</label>
+                <select id="attendance" name="attendance">
+                    <option value="yes">Ya</option>
+                    <option value="no">Tidak</option>
+                </select>
+    
+                <label for="guests">Number of guests:</label>
+                <input type="number" id="guests" name="guests" min="0" value="0">
+    
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="guestbook">
+        <h3>Kritik & Saran</h3>
+        <form action="/submit-guestbook" method="post">
+            <label for="guest-name">Your Name:</label>
+            <input type="text" id="guest-name" name="guest-name" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>Copyright 2024 M DAFFA AL AYUBI</p>
+    </footer>
+
+    <script>
+        // Enable scrolling on button click
+        document.querySelector('.button a').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Remove the overflow hidden from the body to enable scrolling
+            document.body.style.overflow = 'auto';
+            // Smoothly scroll to the profiles section
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            // Add fade-in animation for profile containers
+            setTimeout(function() {
+                document.querySelectorAll('.profile-container').forEach(function(container) {
+                    container.classList.add('show');
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>
